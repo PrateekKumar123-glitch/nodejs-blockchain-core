@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-blockchain-core",
+  "version": "1.0.0",
+  "description": "A custom decentralized blockchain protocol with Proof-of-Work consensus in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env HTTP_PORT=3001 P2P_PORT=6001 node index.js",
+    "peer": "cross-env HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "crypto-js": "^4.2.0",
+    "express": "^4.19.2",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
