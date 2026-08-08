@@ -1,0 +1,59 @@
+[33mcommit dd4bb0a6f7da9315b19f61b4746a1f79526a4fe0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: unknown <prateek1440003@gmail.com>
+Date:   Fri Aug 7 00:05:49 2026 +0530
+
+    feat: Add Proof-of-Work consensus algorithm and cross-platform Windows support
+
+ .dockerignore                               |   2 [32m+[m
+ .gitignore                                  |  22 [32m+[m
+ Dockerfile.client                           |  14 [32m+[m
+ Dockerfile.server                           |  10 [32m+[m
+ README.md                                   | 374 [32m+++++++++++[m
+ docker-compose.yml                          |  16 [32m+[m
+ helm-chart/Chart.yaml                       |   4 [32m+[m
+ helm-chart/templates/client-deployment.yaml |  43 [32m++[m
+ helm-chart/templates/client-ingress.yaml    |  21 [32m+[m
+ helm-chart/templates/client-service.yaml    |  16 [32m+[m
+ helm-chart/templates/server-deployment.yaml |  47 [32m++[m
+ helm-chart/templates/server-service.yaml    |  16 [32m+[m
+ index.js                                    | 235 [32m+++++++[m
+ nginx.conf                                  |  54 [32m++[m
+ package-lock.json                           | 953 [32m++++++++++++++++++++++++++++[m
+ package.json                                |  21 [32m+[m
+ public/favicon.ico                          | Bin [31m0[m -> [32m3870[m bytes
+ public/index.html                           |  40 [32m++[m
+ public/manifest.json                        |  15 [32m+[m
+ src/App.css                                 |  35 [32m+[m
+ src/App.js                                  | 135 [32m++++[m
+ src/App.test.js                             |   8 [32m+[m
+ src/components/AddIdentity.js               |  18 [32m+[m
+ src/components/BlockInfo.js                 |  88 [32m+++[m
+ src/components/BlockchainTree.js            | 160 [32m+++++[m
+ src/components/BlockchainWelcome.js         |  96 [32m+++[m
+ src/components/DetailBlock.js               |  32 [32m+[m
+ src/components/IdentityListItem.js          |  36 [32m++[m
+ src/components/Key.js                       |  58 [32m++[m
+ src/components/NewBlock.js                  | 115 [32m++++[m
+ src/components/NewBlockHeader.js            | 156 [32m+++++[m
+ src/components/NewBlockTransactionList.js   | 175 [32m+++++[m
+ src/components/NewTransaction.js            | 208 [32m++++++[m
+ src/components/Signature.js                 | 223 [32m+++++++[m
+ src/components/TransactionTable.js          |  86 [32m+++[m
+ src/components/UTXOPoolTable.js             |  77 [32m+++[m
+ src/components/WelcomeUTXOPoolTable.js      | 141 [32m++++[m
+ src/components/walkthrough.js               | 120 [32m++++[m
+ src/crypto.js                               |  29 [32m+[m
+ src/index.css                               |   5 [32m+[m
+ src/index.js                                |  14 [32m+[m
+ src/logo.svg                                |   7 [32m+[m
+ src/models/Block.js                         | 129 [32m++++[m
+ src/models/Blockchain.js                    | 122 [32m++++[m
+ src/models/Transaction.js                   |  51 [32m++[m
+ src/models/UTXO.js                          |   6 [32m+[m
+ src/models/UTXOPool.js                      |  50 [32m++[m
+ src/network.js                              |  14 [32m+[m
+ src/registerServiceWorker.js                | 108 [32m++++[m
+ src/server.js                               |  17 [32m+[m
+ src/store.js                                | 110 [32m++++[m
+ yarn.lock                                   | 551 [32m++++++++++++++++[m
+ 52 files changed, 5083 insertions(+)
