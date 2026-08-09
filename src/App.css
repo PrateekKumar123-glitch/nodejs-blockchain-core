@@ -1,7 +1,7 @@
 @import "../node_modules/@blueprintjs/core/dist/blueprint.css";
 
-.App {
-  text-align: center;
+.App 
+  {text-align: center;
 }
 
 .App-logo {
