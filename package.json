@@ -1,5 +1,5 @@
-{
-  "name": "nodejs-blockchain-core",
+
+{  "name": "nodejs-blockchain-core",
   "version": "1.0.0",
   "description": "A custom decentralized blockchain protocol with Proof-of-Work consensus in Node.js",
   "main": "index.js",
