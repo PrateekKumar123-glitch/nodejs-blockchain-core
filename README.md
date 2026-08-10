@@ -1,3 +1,4 @@
+
 # Node.js Blockchain Core
 
 A lightweight, decentralized, peer-to-peer blockchain protocol built from scratch in Node.js. Features SHA-256 Proof-of-Work (PoW) consensus, dynamic peer synchronization over WebSockets, and a simple HTTP API for mining and inspecting blocks.
