@@ -1,10 +1,12 @@
-FROM node:6
-RUN npm install -g yarn
-RUN yarn add express
-RUN yarn add socket.io
+FROM node:18-alpine
 
-# COPY package.json yarn.lock ./
-# RUN yarn --pure-lockfile
+WORKDIR /app
 
-COPY ./src ./src
-CMD node src/server.js
+COPY package*.json ./
+RUN npm install --include=dev
+
+COPY . .
+
+EXPOSE 4000
+
+CMD ["node", "src/server.js"]
