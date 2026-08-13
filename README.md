@@ -1,130 +1,188 @@
 
 # Node.js Blockchain Core
 
-A lightweight, decentralized, peer-to-peer blockchain protocol built from scratch in Node.js. Features SHA-256 Proof-of-Work (PoW) consensus, dynamic peer synchronization over WebSockets, and a simple HTTP API for mining and inspecting blocks.
+A blockchain demo and visualization project built with a Node.js blockchain core and a React frontend. The project demonstrates proof-of-work mining, peer-to-peer synchronization, blockchain state exploration, and a guided walkthrough for understanding how blocks and transactions fit together.
+
+---
+
+## Overview
+
+This repository combines:
+
+- a JavaScript blockchain implementation in `index.js`
+- a browser-based blockchain UI in `src/`
+- a Socket.IO server for the demo app in `src/server.js`
+- Docker packaging for the client and server services
+
+The result is a small educational blockchain environment that can be run locally or in containers.
 
 ---
 
 ## Features
 
-* **Proof-of-Work (PoW):** Custom consensus mechanism requiring blocks to meet a target hash difficulty (`0000` prefix) using nonces and SHA-256 hashing.
-* **P2P Networking:** Direct WebSockets communication between nodes for block propagation and chain synchronization.
-* **Conflict Resolution:** Automatic "longest valid chain" rule to settle forks across connected peers.
-* **HTTP REST API:** Endpoints to submit new data, mine blocks, view current chain state, and manage connected peers.
-* **Cross-Platform:** Works out-of-the-box on Windows PowerShell/CMD, macOS, and Linux using `cross-env`.
+- Proof-of-work mining with SHA-256 and configurable difficulty
+- P2P blockchain synchronization over WebSockets
+- Longest-chain validation and rollback/replace logic
+- Block and transaction visualization in the React app
+- Identities, wallets, and UTXO-style demonstration data
+- Guided walkthrough UI for learning blockchain mechanics
+- Docker Compose support for running the frontend and backend together
 
 ---
 
-## Quick Start
+## Requirements
 
-### Prerequisites
+- Node.js 18+
+- npm
+- Docker and Docker Compose (optional, for containerized setup)
 
-* [Node.js](https://nodejs.org/) (v16 or higher)
-* npm (comes bundled with Node.js)
+---
 
-### Installation
+## Install
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/nodejs-blockchain-core.git
+git clone https://github.com/PrateekKumar123-glitch/nodejs-blockchain-core.git
 cd nodejs-blockchain-core
-
-```
-
-
-2. Install dependencies:
-```bash
 npm install
-
 ```
-
-
 
 ---
 
-## Running the Blockchain
+## Run the project
 
-### 1. Start Primary Node (Node 1)
+### 1) Start the blockchain core
 
-Runs HTTP server on port `3001` and P2P WebSocket server on port `6001`:
+This starts the blockchain node on HTTP port `3001` and P2P port `6001`.
 
 ```bash
 npm start
-
 ```
 
-### 2. Start Secondary Peer Node (Node 2)
+### 2) Start a second peer
 
-Open a second terminal window and launch a peer on ports `3002` (HTTP) and `6002` (P2P), configured to auto-connect to Node 1:
+Open another terminal and run:
 
 ```bash
 npm run peer
-
 ```
+
+This starts a second node on HTTP `3002` and P2P `6002`, and connects it to the first node.
+
+### 3) Start the React client
+
+Open a third terminal and run:
+
+```bash
+npm run client
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+The frontend depends on the browser demo state and can be used alongside the blockchain backend.
 
 ---
 
-## API Endpoints & Usage
+## API endpoints
 
-You can interact with your nodes using `curl`, PowerShell, or Postman.
+The blockchain core exposes a small HTTP API:
 
 | Method | Endpoint | Description |
 | --- | --- | --- |
-| `GET` | `/blocks` | Fetch the full local blockchain ledger |
-| `POST` | `/mineBlock` | Mine a new block with provided payload data |
-| `GET` | `/peers` | List connected WebSocket peer addresses |
-| `POST` | `/addPeer` | Manually connect to another P2P node |
+| `GET` | `/blocks` | Returns the current blockchain state |
+| `POST` | `/mineBlock` | Mines a new block from posted data |
+| `GET` | `/peers` | Lists connected peer addresses |
+| `POST` | `/addPeer` | Connects to a remote peer |
 
-### Examples (Windows PowerShell)
-
-**Mine a new block:**
-
-```powershell
-Invoke-RestMethod -Uri "http://localhost:3001/mineBlock" -Method POST -ContentType "application/json" -Body '{"data": "Transaction Payload #1"}'
-
-```
-
-**Get current chain:**
-
-```powershell
-Invoke-RestMethod -Uri "http://localhost:3001/blocks" -Method GET
-
-```
-
-### Examples (Linux / macOS cURL)
-
-**Mine a new block:**
+### Example: mine a block
 
 ```bash
 curl -X POST http://localhost:3001/mineBlock \
   -H "Content-Type: application/json" \
   -d '{"data": "Transaction Payload #1"}'
+```
 
+### Example: fetch the blockchain
+
+```bash
+curl http://localhost:3001/blocks
 ```
 
 ---
 
-## Project Structure
+## Architecture
+
+The application is split into three layers:
+
+1. Blockchain core (`index.js`)
+   - Maintains the chain state
+   - Implements proof-of-work mining
+   - Handles peer connections and block validation
+   - Exposes the HTTP API on ports `3001`/`3002`
+
+2. Demo server (`src/server.js`)
+   - Runs a Socket.IO server on port `4000`
+   - Supports the interactive browser-based blockchain demo
+   - Broadcasts live events between clients and the simulation layer
+
+3. Frontend (`src/`)
+   - React app rendered through `src/App.js`
+   - Displays blockchain state, identities, transactions, and walkthrough UI
+   - Lets users explore blocks, UTXOs, and chain behavior visually
+
+In practice, the blockchain logic and the interactive demo are related but separate parts of the project. The Node backend is the chain engine, while the frontend and Socket.IO server provide the learning experience and visualization layer.
+
+---
+
+## Docker
+
+The project includes a container setup for the client and backend.
+
+```bash
+docker-compose up --build
+```
+
+This runs:
+
+- client on port `3000`
+- socket server on port `4000`
+
+The Docker configuration is defined in:
+
+- `docker-compose.yml`
+- `Dockerfile.client`
+- `Dockerfile.server`
+
+---
+
+## Repository structure
 
 ```text
-├── index.js             # Core blockchain logic, PoW mining, P2P & HTTP servers
-├── package.json         # Dependencies and cross-platform start scripts
-├── docker-compose.yml   # Multi-node container setup
-└── README.md            # Documentation
-
+.
+├── index.js                 # Core blockchain logic and PoW implementation
+├── src/                    # React frontend and blockchain demo components
+├── src/server.js            # Socket.IO server used by the UI demo
+├── package.json            # Scripts and dependencies
+├── docker-compose.yml      # Multi-container setup
+├── Dockerfile.client       # Frontend container build
+├── Dockerfile.server       # Backend container build
+├── nginx.conf              # Nginx setup for the client container
+├── public/                 # Static assets for CRA
+├── build/                  # Production frontend build output
+├── README.md               # Project documentation
+└── helm-chart/             # Kubernetes chart templates
 ```
 
 ---
 
-## How Proof-of-Work Operates
+## Notes
 
-When `/mineBlock` receives data:
-
-1. It grabs the previous block's hash and index.
-2. It initializes a `nonce` counter at `0`.
-3. It repeatedly calculates a SHA-256 hash across `(index + previousHash + timestamp + data + nonce + difficulty)`.
-4. Increments `nonce` until the resulting hash satisfies the condition: starting with `DIFFICULTY` number of zeroes (default: `4`).
-5. Once a valid hash is found, the block is appended locally and broadcasted to all WebSocket peers.
+- `index.js` is the blockchain backend used for mining and peer synchronization.
+- `src/server.js` is a separate local Socket.IO server for the interactive browser demo.
+- This project is primarily educational and demonstrative, intended to show how blockchain concepts can be implemented in a browser and Node.js environment.
 
 ---
 
