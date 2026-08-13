@@ -1,4 +1,4 @@
-@import "../node_modules/@blueprintjs/core/dist/blueprint.css";
+@import "@blueprintjs/core/lib/css/blueprint.css";
 
 .App 
   {text-align: center;

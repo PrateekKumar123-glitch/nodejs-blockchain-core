@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SortableTree from "react-sortable-tree";
 import { getTreeFromFlatData } from "react-sortable-tree";
 import { Button, Dialog } from "@blueprintjs/core";
-import { contains, pluck, pipe } from "ramda";
 import NewBlock from "./NewBlock";
 import DetailBlock from "./DetailBlock";
 import { Tooltip, advanceTo, Dialog as WalkthroughDialog } from "./walkthrough";
@@ -51,7 +50,7 @@ function generateNodeProps(longestChain) {
         subtitle: `Height ${node.height}`,
         expanded: true
       },
-      className: pipe(pluck("hash"), contains(node.hash))(longestChain)
+      className: longestChain.some(block => block.hash === node.hash)
         ? "partOfLongestChain"
         : ""
     };
