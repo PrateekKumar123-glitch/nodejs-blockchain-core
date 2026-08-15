@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Key from "./Key";
-import { Tab2, Tabs2, EditableText } from "@blueprintjs/core";
+import { Tab, Tabs, EditableText } from "@blueprintjs/core";
 import { action } from "../store"
 export default class IdentityListItem extends Component {
   changeName = (name) => {
@@ -10,13 +10,13 @@ export default class IdentityListItem extends Component {
     return (
       <div style={{marginBottom: '10px'}}>
         <h6><EditableText value={this.props.identity.name} onChange={this.changeName}/></h6>
-        <Tabs2>
-          <Tab2
+        <Tabs>
+          <Tab
             id="public"
             title="Public Key"
             panel={<Key value={this.props.identity.publicKey} />}
           />
-          <Tab2
+          <Tab
             id="private"
             title="Private Key"
             panel={
@@ -29,7 +29,7 @@ export default class IdentityListItem extends Component {
               />
             }
           />
-        </Tabs2>
+        </Tabs>
       </div>
     );
   }

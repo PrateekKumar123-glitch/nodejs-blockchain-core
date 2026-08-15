@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Tooltip, Position } from "@blueprintjs/core";
-import { Popover2 } from "@blueprintjs/labs";
+import { Tooltip, Position, Popover } from "@blueprintjs/core";
 
 // from https://stackoverflow.com/a/16348977
 const stringToColour = function(str) {
@@ -35,7 +34,7 @@ export default class Key extends Component {
         inline={true}
         position={Position.TOP}
       >
-        <Popover2 autoFocus={false} popoverDidOpen={this.props.popoverDidOpen}>
+        <Popover autoFocus={false} popoverDidOpen={this.props.popoverDidOpen}>
           <textarea
             className="pt-input"
             spellCheck={false}
@@ -51,7 +50,7 @@ export default class Key extends Component {
             onChange={this.onChange}
           />
           {this.props.popover}
-        </Popover2>
+        </Popover>
       </Tooltip>
     );
   }
