@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BlockchainTree from "./BlockchainTree";
 import IdentityListItem from "./IdentityListItem";
-import { Tab2, Tabs2, Tooltip } from "@blueprintjs/core";
+import { Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import WelcomeUTXOPoolTable from "./WelcomeUTXOPoolTable";
 import "../App.css";
 import AddIdentity from "./AddIdentity";
@@ -26,8 +26,8 @@ class BlockchainWelcome extends Component {
             verticalAlign: "top"
           }}
         >
-          <Tabs2>
-            <Tab2
+          <Tabs>
+            <Tab
               id="utxo"
               title="UTXOPool"
               panel={
@@ -54,10 +54,10 @@ class BlockchainWelcome extends Component {
                 </div>
               }
             />
-          </Tabs2>
+          </Tabs>
           <hr />
-          <Tabs2>
-            <Tab2
+          <Tabs>
+            <Tab
               id="nodes"
               title="Identities"
               panel={
@@ -86,7 +86,7 @@ class BlockchainWelcome extends Component {
                 </WalkthroughTooltip>
               }
             />
-          </Tabs2>
+          </Tabs>
         </div>
       </div>
     );
