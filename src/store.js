@@ -1,5 +1,5 @@
 import "./index.css";
-import "@blueprintjs/core/dist/blueprint.css";
+import "@blueprintjs/core/lib/css/blueprint.css";
 
 import App from "./App";
 import React from "react";

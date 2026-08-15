@@ -1,6 +1,6 @@
 import { state, action } from "../store";
 import React, { Component } from "react";
-import { Tooltip2 } from "@blueprintjs/labs";
+import { Tooltip as BlueprintTooltip } from "@blueprintjs/core";
 import { Dialog, Button, Intent, Classes } from "@blueprintjs/core";
 import classNames from "classnames";
 
@@ -26,7 +26,7 @@ export function advanceTo(step) {
   action({ type: "ADVANCE_WALKTHROUGH", step });
 }
 
-export class Tooltip extends Component {
+export class WalkthroughTooltip extends Component {
   static defaultProps = {
     nextLabel: "Next",
     nextButtonVisible: true,
@@ -38,7 +38,7 @@ export class Tooltip extends Component {
   };
   render() {
     return (
-      <Tooltip2
+      <BlueprintTooltip
         isOpen={isAtStepAndActive(this.props.step)}
         content={
           <div>
@@ -75,7 +75,7 @@ export class Tooltip extends Component {
         }
       >
         {this.props.children}
-      </Tooltip2>
+      </BlueprintTooltip>
     );
   }
 }
@@ -118,3 +118,4 @@ class WalkthroughDialog extends Component {
 }
 
 export { WalkthroughDialog as Dialog };
+export const Tooltip = WalkthroughTooltip;

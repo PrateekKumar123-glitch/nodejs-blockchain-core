@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Button, Dialog } from "@blueprintjs/core";
-import { Popover2 } from "@blueprintjs/labs";
+import { Icon, Button, Dialog, Popover } from "@blueprintjs/core";
 import AddIdentity from "./AddIdentity";
 import { sign, verifySignature } from "../crypto";
 import { state } from "../store";
@@ -139,7 +138,7 @@ export default class Signature extends Component {
                   </td>
                   <td>+</td>
                   <td>
-                    <Popover2 defaultIsOpen={true}>
+                    <Popover defaultIsOpen={true}>
                       <textarea
                         className="pt-input"
                         placeholder="Private Key"
@@ -176,7 +175,7 @@ export default class Signature extends Component {
                         })}
                         <AddIdentity />
                       </div>
-                    </Popover2>
+                    </Popover>
                   </td>
                   <td>
                     <Icon iconName="pt-icon-arrow-right" />
