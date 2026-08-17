@@ -1,13 +1,10 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);;
 
-io.on('connection', function(socket){
-  socket.on('channel', function(msg){
-    io.emit('channel', msg);
-  });
+app.get('/', function(req, res) {
+  res.send('Blockchain server is running');
 });
 
-http.listen(4000, function(){
+http.listen(4000, function() {
   console.log('listening on *:4000');
 });
