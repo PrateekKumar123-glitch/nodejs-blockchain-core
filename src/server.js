@@ -12,6 +12,7 @@ io.on('connection', function(socket) {
   });
 });
 
-http.listen(4000, function() {
-  console.log('listening on *:4000');
+var PORT = 4000;
+http.listen(PORT, function() {
+  console.log('listening on *:' + PORT);
 });
