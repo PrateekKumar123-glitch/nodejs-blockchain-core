@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Blockchain visualization demo preview</title>
+  <desc id="desc">Preview of the React blockchain interface with the navigation bar, blockchain visualization, UTXO pool, and identities panel.</desc>
+  <rect width="1200" height="620" fill="#f5f7fa"/>
+  <rect width="1200" height="62" fill="#293742"/>
+  <text x="28" y="38" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="700">Build your own Blockchain</text>
+  <text x="925" y="36" fill="#c9d2d9" font-family="Arial, sans-serif" font-size="14">Pick a blockchain or</text>
+  <rect x="1050" y="17" width="120" height="30" rx="3" fill="#ffffff"/>
+  <text x="1062" y="37" fill="#53616b" font-family="Arial, sans-serif" font-size="13">Bitcoin</text>
+  <text x="36" y="105" fill="#26343d" font-family="Arial, sans-serif" font-size="25" font-weight="700">Blockchain Visualization</text>
+  <rect x="36" y="130" width="700" height="420" fill="#ffffff" stroke="#d4dce1"/>
+  <rect x="78" y="205" width="270" height="110" rx="4" fill="#e9f2f7" stroke="#6b8797" stroke-width="2"/>
+  <text x="100" y="242" fill="#26343d" font-family="Arial, sans-serif" font-size="18" font-weight="700">Block a0f52984a5</text>
+  <text x="100" y="270" fill="#53616b" font-family="Arial, sans-serif" font-size="15">Height 1</text>
+  <rect x="100" y="285" width="145" height="22" rx="3" fill="#2f80a0"/>
+  <text x="116" y="301" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">Add block from here</text>
+  <line x1="350" y1="260" x2="460" y2="260" stroke="#8fa4af" stroke-width="3"/>
+  <polygon points="460,260 447,252 447,268" fill="#8fa4af"/>
+  <rect x="470" y="205" width="210" height="110" rx="4" fill="#f7fafb" stroke="#b8c7cf" stroke-width="2"/>
+  <text x="492" y="242" fill="#26343d" font-family="Arial, sans-serif" font-size="17" font-weight="700">Next block</text>
+  <text x="492" y="270" fill="#53616b" font-family="Arial, sans-serif" font-size="14">Transactions and hash</text>
+  <text x="492" y="294" fill="#53616b" font-family="Arial, sans-serif" font-size="14">linked to the chain</text>
+  <rect x="772" y="130" width="392" height="196" fill="#ffffff" stroke="#d4dce1"/>
+  <text x="800" y="168" fill="#26343d" font-family="Arial, sans-serif" font-size="20" font-weight="700">UTXOPool</text>
+  <line x1="800" y1="184" x2="1138" y2="184" stroke="#d4dce1"/>
+  <text x="800" y="220" fill="#53616b" font-family="Arial, sans-serif" font-size="14">Unspent transaction outputs for</text>
+  <text x="800" y="244" fill="#53616b" font-family="Arial, sans-serif" font-size="14">the longest chain appear here.</text>
+  <rect x="772" y="350" width="392" height="200" fill="#ffffff" stroke="#d4dce1"/>
+  <text x="800" y="388" fill="#26343d" font-family="Arial, sans-serif" font-size="20" font-weight="700">Identities</text>
+  <line x1="800" y1="404" x2="1138" y2="404" stroke="#d4dce1"/>
+  <text x="800" y="440" fill="#26343d" font-family="Arial, sans-serif" font-size="16" font-weight="700">Node 04858e4820</text>
+  <text x="800" y="468" fill="#53616b" font-family="Arial, sans-serif" font-size="13">Public key</text>
+  <rect x="800" y="482" width="300" height="28" rx="3" fill="#f5f7fa" stroke="#c8d2d8"/>
+  <text x="812" y="501" fill="#53616b" font-family="monospace" font-size="11">04858e4820e3ac113f5ffe94...</text>
+</svg>

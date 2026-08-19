@@ -72,6 +72,24 @@ Open the app in your browser:
 http://localhost:3000
 ```
 
+## Demo screenshot
+
+The interface combines a block tree with the current UTXO pool and generated identities:
+
+![Blockchain visualization demo preview](docs/demo-screenshot.svg)
+
+The preview is stored in [`docs/demo-screenshot.svg`](docs/demo-screenshot.svg) so the README remains self-contained and renders directly on GitHub.
+
+## How to use the UI
+
+1. Choose the default `Bitcoin` chain from the selector, or enter a name and select `Create` to start another local chain.
+2. Use the block tree to inspect the current chain. Select `Add block from here` to open the block creation flow.
+3. Review the block header, transactions, and signatures before adding the new block.
+4. Open the `UTXOPool` tab to inspect unspent outputs for the longest chain. Select an available output to begin broadcasting a transaction.
+5. Open the `Identities` tab to inspect the generated public/private key pairs. Use `Add another identity` when the demo needs another participant.
+6. Keep the walkthrough enabled for guided explanations, or select `Quit` to explore the interface independently. The walkthrough preference is stored in browser local storage.
+7. Open the app in multiple browser tabs to simulate multiple participants in the demo UI.
+
 ## Blockchain API
 
 The core node exposes a minimal HTTP API.
@@ -99,23 +117,17 @@ curl -X POST http://localhost:3001/mineBlock \
 
 ## Architecture
 
-### Blockchain core
+```mermaid
+flowchart LR
+  Browser[React browser UI\nsrc/] -->|Socket.IO events| Demo[src/server.js\nSocket.IO demo server]
+  Browser -->|Reads and changes local demo state| Store[src/store.js\nmodels and actions]
+  Core[index.js\nBlockchain core] -->|HTTP API| API[HTTP clients\n/blocks /mineBlock /peers /addPeer]
+  Core <-->|WebSocket P2P sync| Peer[Second blockchain node]
+  Demo -.->|Demo broadcasts| Browser
+  Store --> UI[Blockchain tree\nUTXO pool\nidentities\nwalkthrough]
+```
 
-The logic in `index.js` includes:
-
-- block creation and hash calculation
-- proof-of-work mining
-- validation of new blocks against the previous block
-- longest-chain replacement when a peer broadcasts a larger valid chain
-- HTTP and WebSocket endpoints for peer communication
-
-### Demo server
-
-The code in `src/server.js` uses Socket.IO to broadcast app-level events between browser clients and the demo environment.
-
-### Frontend
-
-The UI in `src/` renders a visual representation of blockchain state, identities, wallets, transactions, and the guided walkthrough.
+The core node and browser demo are separate runtime layers. `index.js` owns mining, hashing, validation, and peer synchronization. The React app renders its own educational blockchain models, while `src/server.js` relays Socket.IO events between browser participants.
 
 ## Docker
 
@@ -156,6 +168,7 @@ npm run build
 ├── Dockerfile.server       # Demo server container build
 ├── nginx.conf              # Nginx configuration for the client
 ├── helm-chart/             # Helm chart templates
+├── docs/                   # README media and documentation assets
 ├── README.md               # Project documentation
 └── .gitignore              # Git ignore rules
 ```
