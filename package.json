@@ -25,6 +25,7 @@
     "react-dom": "^16.14.0",
     "react-scripts": "^5.0.1",
     "react-sortable-tree": "^2.8.0",
+    "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
     "ws": "^8.16.0"
   },
